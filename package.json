@@ -11,8 +11,9 @@
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "check-types": "tsc --pretty --noEmit",
     "format": "prettier --write .",
-    "lintFix": "eslint ./ --fix",
-    "precommit": "npm run check-lint && npm run check-types && npm run format && npm run lintFix",
+    "lint-fix": "eslint ./ --fix",
+    "precommit": "npm run check-lint && npm run check-types && npm run format && npm run lint-fix",
+    "prepush": "npm run test",
     "prepare": "husky"
   },
   "dependencies": {

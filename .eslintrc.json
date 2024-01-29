@@ -5,11 +5,18 @@
     "node": true
   },
 
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+
   "extends": [
     "prettier",
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
 
@@ -19,7 +26,7 @@
     "sourceType": "module"
   },
 
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
 
   "ignorePatterns": ["*.test.js", "*.test.tsx"],
 
@@ -31,6 +38,8 @@
       1,
       { "extensions": [".js", ".jsx", ".tsx"] }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
