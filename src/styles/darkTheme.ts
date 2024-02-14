@@ -1,3 +1,5 @@
+'use client'
+
 export const darkTheme = {
   name: 'dark',
   borderRadius: '4px',

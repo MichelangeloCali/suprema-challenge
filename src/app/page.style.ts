@@ -9,13 +9,6 @@ export const Main = styled.main`
   min-width: 100vw;
   padding: 0;
   margin: 0;
-  background-color: ${({ theme }) => theme.bodyColor};
+  background-color: ${({ theme }) => theme.pallete.primary.main};
   color: ${({ theme }) => theme.textColor};
-`
-
-export const Container = styled.div`
-  /* background-color: ${({ theme }) => theme.bodyColor}; */
-  background-color: purple;
-  color: ${({ theme }) => theme.textColor};
-  align-self: center;
 `

@@ -1,3 +1,5 @@
+'use client'
+
 export const lightTheme = {
   name: 'light',
   borderRadius: '4px',
