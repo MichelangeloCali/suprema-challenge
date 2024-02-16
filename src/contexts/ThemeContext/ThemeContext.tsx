@@ -39,7 +39,7 @@ export const AppThemeProvider: FunctionComponent<{ children: ReactNode }> = ({
 
   const [themeName, setThemeName] = useState<'light' | 'dark'>(
     // getInitialThemePreference(),
-    'light',
+    'dark',
   )
 
   const toggleTheme = useCallback(() => {

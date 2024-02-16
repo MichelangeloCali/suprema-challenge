@@ -5,10 +5,12 @@ type ThemeType = {
   borderRadius: string
   bodyColor: string
   textColor: string
+  imgBackground: string
   pallete: {
     common: {
       black: string
       white: string
+      grey: string
     }
     primary: {
       main: string
@@ -28,6 +30,19 @@ type ThemeType = {
         contrastText: string
       }
     }
+    pokemonsElementColor: {
+      grass: string
+      poison: string
+      fire: string
+      flying: string
+      water: string
+      bug: string
+    }
+  }
+  fontSize: {
+    sm: string
+    md: string
+    lg: string
   }
 }
 

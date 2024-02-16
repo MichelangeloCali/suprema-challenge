@@ -1,17 +1,17 @@
 import { BASE_API_URL } from '@/config'
-import type { Pokemon, PokemonResponse } from './types'
+import type { PokemonType, PokemonResponseType } from './types'
 
 const maxPokemons = 12
 
-export const getPokemons = async (): Promise<Pokemon[]> => {
+export const getPokemons = async (): Promise<PokemonType[]> => {
   try {
     const response = await fetch(`${BASE_API_URL}/pokemon?limit=${maxPokemons}`)
     const data = await response.json()
 
-    const pokemons: Pokemon[] = await Promise.all(
+    const pokemons: PokemonType[] = await Promise.all(
       data.results.map(async (pokemon: { url: string }, index: number) => {
         const detailsResponse = await fetch(pokemon.url)
-        const detailsData: PokemonResponse = await detailsResponse.json()
+        const detailsData: PokemonResponseType = await detailsResponse.json()
         const pokemonId = index + 1
         const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`
 
@@ -19,11 +19,11 @@ export const getPokemons = async (): Promise<Pokemon[]> => {
           id: pokemonId,
           imageUrl: imageUrl,
           name: detailsData.name,
+          species: detailsData.species,
           abilities: detailsData.abilities.map(
             (ability) => ability.ability.name,
           ),
-          species: detailsData.species,
-          types: detailsData.types,
+          types: detailsData.types.map((type) => type.type.name),
         }
       }),
     )

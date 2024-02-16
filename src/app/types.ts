@@ -1,4 +1,4 @@
-export interface Pokemon {
+export type PokemonType = {
   id: number
   name: string
   abilities: string[]
@@ -13,7 +13,7 @@ export interface Pokemon {
   imageUrl: string
 }
 
-export interface PokemonResponse {
+export type PokemonResponseType = {
   name: string
   abilities: {
     ability: {
