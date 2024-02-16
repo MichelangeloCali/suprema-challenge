@@ -1,18 +1,30 @@
+'use server'
+
 import { BASE_API_URL } from '@/config'
-import type { PokemonType, PokemonResponseType } from './types'
+import type {
+  PokemonType,
+  PokemonResponseType,
+  DetailedPokemonType,
+} from './types'
 
-const maxPokemons = 12
-
-export const getPokemons = async (): Promise<PokemonType[]> => {
+export const getPokemons = async ({
+  limit,
+  offset,
+}: {
+  limit: number
+  offset: number
+}): Promise<PokemonType[]> => {
   try {
-    const response = await fetch(`${BASE_API_URL}/pokemon?limit=${maxPokemons}`)
+    const response = await fetch(
+      `${BASE_API_URL}/pokemon?limit=${limit}&offset=${offset}`,
+    )
     const data = await response.json()
 
     const pokemons: PokemonType[] = await Promise.all(
       data.results.map(async (pokemon: { url: string }, index: number) => {
         const detailsResponse = await fetch(pokemon.url)
         const detailsData: PokemonResponseType = await detailsResponse.json()
-        const pokemonId = index + 1
+        const pokemonId = offset > 1 ? offset + index + 1 : index + 1
         const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`
 
         return {
@@ -31,5 +43,39 @@ export const getPokemons = async (): Promise<PokemonType[]> => {
   } catch (error) {
     console.error('Error fetching data:', error)
     throw new Error('Failed to fetch Pokemon data')
+  }
+}
+
+export const getPokemonById = async (
+  pokemonId: number,
+): Promise<DetailedPokemonType | null> => {
+  try {
+    const response = await fetch(`${BASE_API_URL}/pokemon/${pokemonId}`)
+    const pokemonData = await response.json()
+
+    if (!pokemonData) {
+      throw new Error(`Pokémon with ID ${pokemonId} not found`)
+    }
+
+    const pokemon: DetailedPokemonType = {
+      id: pokemonData.id,
+      imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`,
+      name: pokemonData.name,
+      species: pokemonData.species,
+      abilities: pokemonData.abilities.map(
+        (ability: { ability: { name: string } }) => ability.ability.name,
+      ),
+      types: pokemonData.types.map(
+        (type: { type: { name: string } }) => type.type.name,
+      ),
+      height: pokemonData.height,
+      weight: pokemonData.weight,
+      baseExperience: pokemonData.base_experience,
+    }
+
+    return pokemon
+  } catch (error) {
+    console.error('Error fetching Pokémon data:', error)
+    throw new Error('Failed to fetch Pokémon data')
   }
 }

@@ -13,6 +13,12 @@ export type PokemonType = {
   imageUrl: string
 }
 
+export type DetailedPokemonType = PokemonType & {
+  height: number
+  weight: number
+  baseExperience: number
+}
+
 export type PokemonResponseType = {
   name: string
   abilities: {

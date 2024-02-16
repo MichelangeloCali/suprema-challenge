@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { AppThemeProvider } from '@/contexts'
+import { Main } from './layout.styles'
 
 export const metadata: Metadata = {
   title: 'Suprema challenge',
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppThemeProvider>{children}</AppThemeProvider>
+        <AppThemeProvider>
+          <Main>{children}</Main>
+        </AppThemeProvider>
       </body>
     </html>
   )

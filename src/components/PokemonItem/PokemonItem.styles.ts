@@ -9,17 +9,6 @@ const elementColors = {
   bug: '#A8B820',
 }
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
-  gap: 2rem;
-  width: 100%;
-  padding: 24px;
-  padding-right: calc((100vw - 1440px) / 2);
-  padding-left: calc((100vw - 1440px) / 2);
-`
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,6 +19,7 @@ export const Content = styled.div`
   padding-bottom: 24px;
   background-color: ${({ theme }) => theme.pallete.common.grey};
   border-radius: 8px;
+  cursor: pointer;
 `
 
 export const ContentImage = styled.div`
@@ -57,7 +47,11 @@ export const Type = styled.p`
   text-align: center;
 `
 
-export const ContentAbilitieAndElement = styled.div``
+export const ContentAbilitieAndElement = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-left: 28px;
+`
 
 export const ContentText = styled.div<{ type?: keyof typeof elementColors }>`
   display: flex;
