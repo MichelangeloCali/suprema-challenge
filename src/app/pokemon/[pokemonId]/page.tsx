@@ -7,9 +7,5 @@ export default function PokemonPage({
 }) {
   const pokemonId = params?.pokemonId
 
-  return (
-    <>
-      <PokemonDetails pokemonId={pokemonId} />
-    </>
-  )
+  return <PokemonDetails pokemonId={pokemonId} />
 }

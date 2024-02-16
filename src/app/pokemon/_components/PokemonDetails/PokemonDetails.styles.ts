@@ -26,8 +26,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding: 24px;
-  padding-right: calc((100vw - 1440px) / 2);
-  padding-left: calc((100vw - 1440px) / 2);
 
   @media (max-width: 1024px) {
     gap: 1rem;
@@ -40,15 +38,6 @@ export const ContentLoading = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-`
-
-export const BackButton = styled.button`
-  display: flex;
-  flex-direction: column;
-  grid-row: 1;
-  background-color: ${({ theme }) => theme.pallete.primary.main};
-  color: ${({ theme }) => theme.pallete.common.white};
-  border: none;
 `
 
 export const Title = styled.h1`
@@ -88,7 +77,8 @@ export const ContentImage = styled.div`
   align-items: center;
   justify-content: center;
   padding: 24px;
-  max-width: 300px;
+  max-width: 280px;
+  max-height: 400px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.pallete.common.white};
   animation: ${({ theme }) =>

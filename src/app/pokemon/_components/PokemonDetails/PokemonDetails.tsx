@@ -2,15 +2,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { IoArrowBackCircleOutline } from 'react-icons/io5'
 
 import { getPokemonById } from '@/app/actions'
 
 import {
   Container,
-  BackButton,
   ContentLoading,
   Title,
   Content,
@@ -21,13 +18,11 @@ import {
   SubText,
 } from './PokemonDetails.styles'
 import type { DetailedPokemonType } from '@/app/types'
-import { LoadMoreArticles } from '@/components'
+import { BackButton, LoadMoreArticles } from '@/components'
 
 export const PokemonDetails = ({ pokemonId }: { pokemonId: string }) => {
   const [pokemonDetails, setPokemonDetails] =
     useState<DetailedPokemonType | null>(null)
-
-  const router = useRouter()
 
   useEffect(() => {
     getPokemonById(Number(pokemonId))
@@ -49,9 +44,7 @@ export const PokemonDetails = ({ pokemonId }: { pokemonId: string }) => {
 
   return (
     <Container>
-      <BackButton onClick={() => router.back()}>
-        <IoArrowBackCircleOutline size={32} />
-      </BackButton>
+      <BackButton />
 
       <Content>
         <Title>{pokemonDetails.name}</Title>

@@ -7,6 +7,4 @@ export const Container = styled.div`
   gap: 2rem;
   width: 100%;
   padding: 24px;
-  padding-right: calc((100vw - 1440px) / 2);
-  padding-left: calc((100vw - 1440px) / 2);
 `
