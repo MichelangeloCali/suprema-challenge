@@ -42,6 +42,7 @@ export const LinkText = styled.p`
 
 export const NotFoundContent = styled.div`
   display: grid;
+  padding: 24px;
   grid-template-rows: auto 1fr;
   align-items: center;
   height: calc(100vh - 128px);

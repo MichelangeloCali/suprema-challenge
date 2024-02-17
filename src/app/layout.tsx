@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
+import { Montserrat } from 'next/font/google'
+import Link from 'next/link'
 
 import { AppThemeProvider } from '@/contexts'
 import { Main, Header, Nav, LinkText } from './styles'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Suprema challenge',
   description: 'This is challenge Suprema',
 }
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export default function RootLayout({
   children,
@@ -15,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.className}>
       <body>
         <AppThemeProvider>
           <Header>

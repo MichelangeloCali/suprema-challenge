@@ -16,6 +16,7 @@ import {
   Details,
   Text,
   SubText,
+  ContentAbilitieAndElement,
 } from './PokemonDetails.styles'
 import type { DetailedPokemonType } from '@/app/types'
 import { BackButton, LoadMoreArticles } from '@/components'
@@ -52,44 +53,50 @@ export const PokemonDetails = ({ pokemonId }: { pokemonId: string }) => {
           <Image
             src={pokemonDetails?.imageUrl}
             alt={pokemonDetails?.name}
-            width={400}
-            height={400}
+            width={360}
+            height={360}
             priority
           />
         </ContentImage>
 
         <ContentDetails>
           <Details>
-            <Text>Espécie:</Text>
+            <Text>Espécie</Text>
             <SubText>{pokemonDetails.species.name}</SubText>
           </Details>
 
           <Details>
-            <Text>Poder:</Text>
-            {pokemonDetails.abilities.map((item) => (
-              <SubText key={item}>{item}</SubText>
-            ))}
+            <Text>Poder</Text>
+            <ContentAbilitieAndElement>
+              {pokemonDetails.abilities.map((item) => (
+                <SubText key={item}>{item}</SubText>
+              ))}
+            </ContentAbilitieAndElement>
           </Details>
 
           <Details>
-            <Text>Elemento:</Text>
-            {pokemonDetails.types.map((item: any) => (
-              <SubText key={item}>{item}</SubText>
-            ))}
+            <Text>Elemento</Text>
+            <ContentAbilitieAndElement>
+              {pokemonDetails.types.map((item: any) => (
+                <SubText key={item} type={item as any}>
+                  {item}
+                </SubText>
+              ))}
+            </ContentAbilitieAndElement>
           </Details>
 
           <Details>
-            <Text>Altura:</Text>
+            <Text>Altura</Text>
             <SubText>{pokemonDetails.height}</SubText>
           </Details>
 
           <Details>
-            <Text>Peso:</Text>
+            <Text>Peso</Text>
             <SubText>{pokemonDetails.weight}</SubText>
           </Details>
 
           <Details>
-            <Text>Experiência Base:</Text>
+            <Text>Experiência Base</Text>
             <SubText>{pokemonDetails.baseExperience}</SubText>
           </Details>
         </ContentDetails>

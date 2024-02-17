@@ -5,6 +5,7 @@ export const Container = styled.div`
   grid-template-rows: auto auto 1fr;
   align-items: center;
   height: calc(100vh - 128px);
+  padding: 24px;
 `
 
 export const Title = styled.h1`

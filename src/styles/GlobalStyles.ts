@@ -9,7 +9,7 @@ export const GlobalStyles = styled.createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -45,7 +45,7 @@ export const GlobalStyles = styled.createGlobalStyle`
   input,
   textarea,
   button {
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
     font-weight: 400;
   }
 

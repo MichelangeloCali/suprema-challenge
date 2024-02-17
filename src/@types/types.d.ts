@@ -30,14 +30,7 @@ type ThemeType = {
         contrastText: string
       }
     }
-    pokemonsElementColor: {
-      grass: string
-      poison: string
-      fire: string
-      flying: string
-      water: string
-      bug: string
-    }
+    pokemonsElementColor: typeof elementColors
   }
   fontSize: {
     sm: string

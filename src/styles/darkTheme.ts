@@ -1,5 +1,24 @@
 'use client'
 
+export const elementColors = {
+  grass: '#78C850',
+  poison: '#A040A0',
+  fire: '#F08030',
+  flying: '#A890F0',
+  water: '#6890F0',
+  bug: '#A8B820',
+  normal: '#A8A77A',
+  electric: '#F8D030',
+  ground: '#E0C068',
+  fairy: '#EE99AC',
+  fighting: '#C03028',
+  psychic: '#F85888',
+  rock: '#B8A038',
+  steel: '#B8B8D0',
+  ice: '#98D8D8',
+  ghost: '#705898',
+}
+
 export const darkTheme = {
   name: 'dark',
   borderRadius: '4px',
@@ -30,14 +49,7 @@ export const darkTheme = {
         contrastText: '#121212',
       },
     },
-    pokemonsElementColor: {
-      grass: '#78C850',
-      poison: '#A040A0',
-      fire: '#F08030',
-      flying: '#A890F0',
-      water: '#6890F0',
-      bug: '#A8B820',
-    },
+    pokemonsElementColor: elementColors,
   },
   fontSize: {
     sm: '14px',

@@ -1,13 +1,5 @@
 import styled from 'styled-components'
-
-const elementColors = {
-  grass: '#78C850',
-  poison: '#A040A0',
-  fire: '#F08030',
-  flying: '#A890F0',
-  water: '#6890F0',
-  bug: '#A8B820',
-}
+import { elementColors } from '@/styles/darkTheme'
 
 export const Content = styled.div`
   display: flex;
@@ -36,7 +28,7 @@ export const Title = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.lg};
   color: ${({ theme }) => theme.pallete.common.black};
   background-color: ${({ theme }) => theme.pallete.primary.contrastText};
-  width: 50%;
+  width: 70%;
   padding: 4px 12px;
   border-radius: 0 8px 8px 0;
 `
