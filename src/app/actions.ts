@@ -89,6 +89,7 @@ export async function sendFormData(contact: Contact) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(contact),
+      cache: 'no-cache',
     })
 
     if (!response.ok) {
