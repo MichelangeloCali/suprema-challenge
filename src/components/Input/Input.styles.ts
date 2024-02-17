@@ -14,11 +14,8 @@ export const InputContent = styled.input<{ error?: boolean }>`
   background-color: ${({ error }) => (error ? 'mistyrose' : 'none')};
   border-color: ${({ error }) => (error ? 'mistyrose' : 'none')};
   border-radius: 8px;
-  padding-left: 68px;
-
-  &:hover {
-    border: none;
-  }
+  padding-left: 80px;
+  padding-right: 8px;
 
   &:focus {
     border: none;
