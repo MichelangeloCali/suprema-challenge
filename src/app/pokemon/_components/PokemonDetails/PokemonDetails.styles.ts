@@ -24,7 +24,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 128px);
   padding: 24px;
 
   @media (max-width: 1024px) {

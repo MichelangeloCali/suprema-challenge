@@ -1,4 +1,4 @@
-import { ThemeType } from '@/@types/styled'
+import { ThemeType } from '@/@types/types'
 
 export type ThemeContextType = {
   themeName: 'light' | 'dark'

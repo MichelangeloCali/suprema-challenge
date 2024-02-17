@@ -2,8 +2,10 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { v4 as uuidv4 } from 'uuid'
 
 import { BackButton } from '@/components'
+import { sendFormData } from '@/app/actions'
 import { contactFormSchema, createContactFormData } from '@/utils'
 
 import { Input } from '@/components/Input'
@@ -25,9 +27,17 @@ export const ContactForm = () => {
     resolver: zodResolver(contactFormSchema),
   })
 
-  const onSubmit = (data: createContactFormData) => {
-    console.log('Form value = ', data)
-    // Envie os dados para a API ou faça o que desejar aqui
+  const onSubmit = async (formData: createContactFormData) => {
+    try {
+      const formDataWithId = {
+        ...formData,
+        id: uuidv4(),
+      }
+      const response = await sendFormData(formDataWithId)
+      console.log('Formulário enviado com sucesso:', response)
+    } catch (error) {
+      console.error('Erro ao enviar o formulário:', error)
+    }
   }
 
   return (
@@ -52,11 +62,12 @@ export const ContactForm = () => {
         />
         <TextArea
           placeholder="mensagem"
-          error={!!errors.text}
-          {...register('text')}
+          error={!!errors.message}
+          {...register('message')}
+          name="message"
         />
-        {errors.text && (
-          <ErrorMessageTextArea>{errors.text?.message}</ErrorMessageTextArea>
+        {errors.message && (
+          <ErrorMessageTextArea>{errors.message?.message}</ErrorMessageTextArea>
         )}
 
         <ButtonForm type="submit">Enviar</ButtonForm>

@@ -1,11 +1,12 @@
 'use server'
 
-import { BASE_API_URL } from '@/config'
+import { BASE_URL_LOCAL, POKEMON_BASE_API_URL } from '@/config'
 import type {
   PokemonType,
   PokemonResponseType,
   DetailedPokemonType,
 } from './types'
+import { Contact } from '@/@types/types'
 
 export const getPokemons = async ({
   limit,
@@ -16,7 +17,7 @@ export const getPokemons = async ({
 }): Promise<PokemonType[]> => {
   try {
     const response = await fetch(
-      `${BASE_API_URL}/pokemon?limit=${limit}&offset=${offset}`,
+      `${POKEMON_BASE_API_URL}/pokemon?limit=${limit}&offset=${offset}`,
     )
     const data = await response.json()
 
@@ -50,7 +51,7 @@ export const getPokemonById = async (
   pokemonId: number,
 ): Promise<DetailedPokemonType | null> => {
   try {
-    const response = await fetch(`${BASE_API_URL}/pokemon/${pokemonId}`)
+    const response = await fetch(`${POKEMON_BASE_API_URL}/pokemon/${pokemonId}`)
     const pokemonData = await response.json()
 
     if (!pokemonData) {
@@ -77,5 +78,27 @@ export const getPokemonById = async (
   } catch (error) {
     console.error('Error fetching Pokémon data:', error)
     throw new Error('Failed to fetch Pokémon data')
+  }
+}
+
+export async function sendFormData(contact: Contact) {
+  try {
+    const response = await fetch(`${BASE_URL_LOCAL}/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contact),
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to submit contact form')
+    }
+
+    const responseData = await response.json()
+    return responseData
+  } catch (error) {
+    console.error('Error submitting contact form:', error)
+    throw new Error('Failed to submit contact form')
   }
 }

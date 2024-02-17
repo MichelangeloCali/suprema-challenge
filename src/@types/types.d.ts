@@ -49,3 +49,10 @@ type ThemeType = {
 declare module 'styled-components' {
   export interface DefaultTheme extends ThemeType {}
 }
+
+export type Contact = {
+  id: string
+  name: string
+  email: string
+  message: string
+}
